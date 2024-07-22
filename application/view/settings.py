@@ -55,7 +55,7 @@ def SettingsPost(user: KeUser):
     book_config['mode'] = form.get('book_mode', '')
     book_config['rm_links'] = form.get('remove_hyperlinks', '')
     book_config['author_fmt'] = form.get('author_format', '') #修正Kindle 5.9.x固件的bug【将作者显示为日期】
-    book_config['title'] = form.get('rss_title') or 'KindleEar'
+    book_config["title"] = form.get("rss_title") or "EasyChuan"
     book_config['language'] = form.get("book_language", "en")
     book_config['oldest_article'] = int(form.get('oldest', 7))
     book_config['time_fmt'] = form.get('time_fmt', '')

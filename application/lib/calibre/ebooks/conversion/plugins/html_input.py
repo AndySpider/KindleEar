@@ -64,11 +64,11 @@ class HTMLInput(InputFormatPlugin):
     def convert(self, input_, opts, file_ext, log, output_dir, fs):
         user = opts.user
         fs.write('/index.html', input_.get('html', ''))
-        title = input_.get('title', 'KindleEar')
-        mi = MetaInformation(title, ['KindleEar'])
-        mi.publisher = 'KindleEar'
-        mi.author_sort = 'KindleEar'
-        mi.authors = ['KindleEar']
+        title = input_.get('title', 'EasyChuan')
+        mi = MetaInformation(title, ["EasyChuan"])
+        mi.publisher = "EasyChuan"
+        mi.author_sort = "EasyChuan"
+        mi.authors = ["EasyChuan"]
         mi.publication_type = f'book:book:{title}'
         mi.timestamp = user.local_time()
         mi.language = input_.get('language') or user.book_cfg('language')
@@ -85,7 +85,7 @@ class HTMLInput(InputFormatPlugin):
         opf.manifest.item(ncx_id).id = 'ncx'
 
         toc = TOC(base_path=fs.path)
-        toc.add_item('/index.html', None, title, play_order=1, author='KindleEar', description='KindleEar', toc_thumbnail=None)
+        toc.add_item('/index.html', None, title, play_order=1, author='EasyChuan', description='EasyChuan', toc_thumbnail=None)
         opf.create_spine(['/index.html'])
         opf.set_toc(toc)
 

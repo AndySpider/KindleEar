@@ -128,7 +128,7 @@ class RecipeInput(InputFormatPlugin):
             firstName = os.path.join(output_dir, 'index.html')
             soup1 = BeautifulSoup(fs.read(firstName), 'lxml')
             title_tag = soup1.find('title')
-            title1 = title_tag.string if title_tag else 'KindleEar'
+            title1 = title_tag.string if title_tag else "EasyChuan"
 
             #ul里面的li提取出来，外面套ul作为原先ul的一个li
             ul1 = soup1.find('ul', class_='calibre_feed_list')
@@ -161,7 +161,7 @@ class RecipeInput(InputFormatPlugin):
                 fs.delete(fileName) #删掉不要了
 
             if title_tag:
-                title_tag.string = 'KindleEar'
+                title_tag.string = "EasyChuan"
             fs.write(firstName, str(soup1).encode('utf-8'))
 
     #通过Feed对象列表构建一个opf文件，将这个函数从 BasicNewsRecipe 里面移出来，方便一次处理多个Recipe
@@ -311,8 +311,8 @@ class RecipeInput(InputFormatPlugin):
         timefmt = recipe1.timefmt.strip()
         if timefmt and self.user.book_cfg('title_fmt'):
             title = f'{title} {strftime(timefmt, pdate)}'
-        mi = MetaInformation(title, ['KindleEar'])
-        mi.publisher = 'KindleEar'
+        mi = MetaInformation(title, ["EasyChuan"])
+        mi.publisher = "EasyChuan"
         #修正Kindle固件5.9.x将作者显示为日期的BUG
         authorFmt = self.user.book_cfg('author_fmt')
         now = self.user.local_time()
@@ -321,8 +321,8 @@ class RecipeInput(InputFormatPlugin):
             mi.author_sort = snow
             mi.authors = [snow]
         else:
-            mi.author_sort = 'KindleEar'
-            mi.authors = ['KindleEar']
+            mi.author_sort = "EasyChuan"
+            mi.authors = ["EasyChuan"]
         if recipe1.publication_type == 'magazine':
             mi.publication_type = f'periodical:magazine:{title}'
         elif recipe1.publication_type:
@@ -340,7 +340,7 @@ class RecipeInput(InputFormatPlugin):
                     aseen.add(a.title)
                     article_titles.append(force_unicode(a.title, 'utf-8'))
 
-        desc = recipe1.description if onlyRecipe else 'KindleEar'
+        desc = recipe1.description if onlyRecipe else "EasyChuan"
         if not isinstance(desc, str):
             desc = desc.decode('utf-8', 'replace')
         mi.comments = (_('Articles in this issue:') + '\n' + '\n'.join(article_titles)) + '\n\n' + desc

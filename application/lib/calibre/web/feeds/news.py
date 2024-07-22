@@ -112,7 +112,7 @@ class BasicNewsRecipe(Recipe):
     description = ''
 
     #: The author of this recipe
-    __author__             = "KindleEar"
+    __author__             = "EasyChuan"
 
     #: Minimum calibre version needed to use this recipe
     requires_version = (0, 6, 0)
@@ -1706,9 +1706,9 @@ class BasicNewsRecipe(Recipe):
         pdate = self.publication_date()
         if self.output_profile.periodical_date_in_title:
             title += strftime(self.timefmt, pdate)
-        mi = MetaInformation(title, ['KindleEar'])
-        mi.publisher = 'KindleEar'
-        mi.author_sort = 'KindleEar'
+        mi = MetaInformation(title, ['EasyChuan'])
+        mi.publisher = 'EasyChuan'
+        mi.author_sort = 'EasyChuan'
         if self.publication_type:
             mi.publication_type = 'periodical:'+self.publication_type+':'+self.short_title()
         mi.timestamp = nowf()
@@ -2169,7 +2169,7 @@ class UrlNewsRecipe(BasicNewsRecipe):
         for obj in urls:
             title, url = (self.title, obj) if isinstance(obj, str) else obj
             id_counter += 1
-            feed.articles.append(Article(f'internal id#{id_counter}', title, url, 'KindleEar', '', now, ''))
+            feed.articles.append(Article(f'internal id#{id_counter}', title, url, 'EasyChuan', '', now, ''))
         feed.id_counter = id_counter
 
         return [feed]
@@ -2231,7 +2231,7 @@ class WebPageUrlNewsRecipe(BasicNewsRecipe):
                 delta = (now - timeItem.datetime).total_seconds() if timeItem else (oldestSeconds + 1)
                 if (self.delivery_reason == 'manual') or (delta > oldestSeconds):
                     id_counter += 1
-                    feed.articles.append(Article(f'internal id#{id_counter}', title, url, 'KindleEar', 
+                    feed.articles.append(Article(f'internal id#{id_counter}', title, url, 'EasyChuan', 
                         '', time.gmtime(), ''))
 
                     #如果是手动推送，不单不记录已推送日期，还将已有的上次推送日期数据删除
