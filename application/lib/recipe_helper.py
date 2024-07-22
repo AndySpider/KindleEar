@@ -27,7 +27,7 @@ def GenerateRecipeSource(title, feeds, user, isfulltext=False, language=None, ma
         feedsStr = [f"{indent}{py3_repr(url)}," for url in feeds]
     
     feeds = 'feeds          = [\n{}\n    ]'.format('\n'.join(feedsStr)) if feedsStr else ''
-    desc = 'News from {}'.format(', '.join(feedTitles)) if feedTitles else 'Deliver from KindleEar'
+    desc = '{}'.format(', '.join(feedTitles)) if feedTitles else 'Deliver from EasyChuan'
     desc = desc[:100].replace('"', "'")
     oldest_article = user.book_cfg('oldest_article')
     auto_cleanup = 'False' if isfulltext else 'True'
